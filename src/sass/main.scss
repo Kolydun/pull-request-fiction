@@ -6,9 +6,18 @@
 @use 'common/base';
 
 // ===== Component partials =====
-// Each ticket registers its partial here. Keep alphabetical, one per line.
-// Lead-owned: do not remove other teams' lines.
-//
-// @use '../js/components/header/header';
-// @use '../js/components/footer/footer';
-// ... (added in Task 7)
+// Each ticket owns its own line. Keep alphabetical, one per line.
+// Lead-owned file: do not remove other teams' lines.
+@use '../js/components/categories/categories';
+@use '../js/components/exercises/exercises';
+@use '../js/components/favorites/favorites';
+@use '../js/components/filters/filters';
+@use '../js/components/footer/footer';
+@use '../js/components/header/header';
+@use '../js/components/hero/hero';
+@use '../js/components/loader/loader';
+@use '../js/components/modalExercise/modalExercise';
+@use '../js/components/modalRating/modalRating';
+@use '../js/components/quote/quote';
+@use '../js/components/scrollUp/scrollUp';
+@use '../js/components/search/search';
