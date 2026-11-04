@@ -1,11 +1,11 @@
 # Your Energy
 
-Multi-page **Vite + Vanilla JS + SCSS** app for the GoIT "Your Energy" team project.
+Multi-page **Vite + Vanilla JS + CSS** app for the GoIT "Your Energy" team project.
 Find exercises by category, search, rate them, save favorites and stay motivated.
 
 ## Tech stack
 
-Vite · Vanilla JS (ES modules) · SCSS (Dart Sass) · modern-normalize · axios · iziToast ·
+Vite · Vanilla JS (ES modules) · CSS · modern-normalize · axios ·
 ESLint + Prettier + EditorConfig · GitHub Pages.
 
 ## Scripts
@@ -21,27 +21,29 @@ npm run lint    # lint the codebase
 ## Project structure
 
 ```
-index.html / favorites.html   # two page entries (multi-page Vite)
 src/
-  main.js / favorites.js       # per-page bootstrap: call each init*()
-  sass/
-    main.scss                  # global entry + component @use list (lead-owned)
-    common/                    # variables, mixins, base, fonts
+  index.html / favorites.html  # pages; each dev adds their own <load>
+  partials/                    # empty; each dev creates their own HTML file
+  main.js / favorites.js       # per-page scripts
+  css/
+    main.css                   # shared styles; each dev adds an @import
+    common/                    # variables, base, loader
   js/
     api/energyApi.js           # API service (lead-owned)
     constants/                 # shared constants (lead-owned)
-    helpers/                   # storage, notify, pagination, loader
-    components/<name>/          # one folder per ticket: <name>.js + <name>.scss
+    helpers/                   # loader
   images/                      # static images
-public/                        # favicon, manifest, robots.txt
+  public/                      # favicon
 ```
 
-Each feature ticket owns exactly one `src/js/components/<name>/` folder and its SCSS partial.
+Each feature ticket creates its own partial, JS and CSS. Static markup goes in the partial. Repeated cards from the API are built in JS.
 Shared/lead-owned files are listed in [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Contributing
 
-Branch model, naming, commit and PR rules are in [CONTRIBUTING.md](./CONTRIBUTING.md).
+- **[DEVELOPERS.md](./DEVELOPERS.md)** — how to build your component step by step (start here).
+- **[CONTRIBUTING.md](./CONTRIBUTING.md)** — branch model, naming, commit and PR rules.
+
 Branch from `dev`, open PRs into `dev`; `main` stays protected and deployable.
 
 ## Deploy

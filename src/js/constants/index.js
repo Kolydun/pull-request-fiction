@@ -15,24 +15,3 @@ export const FILTER_TYPES = {
   BODY_PARTS: 'Body parts',
   EQUIPMENT: 'Equipment',
 };
-
-// localStorage keys.
-export const STORAGE_KEYS = {
-  FAVORITES: 'ye-favorites',
-  QUOTE: 'ye-quote-of-the-day',
-};
-
-// Breakpoints in px (kept in sync with SCSS $breakpoints).
-export const BREAKPOINTS = {
-  MOBILE: 320,
-  TABLET: 768,
-  DESKTOP: 1440,
-};
-
-// Default pagination limits per layout.
-export const DEFAULT_LIMITS = {
-  FILTERS_MOBILE: 9,
-  FILTERS_DESKTOP: 12,
-  EXERCISES_MOBILE: 8,
-  EXERCISES_DESKTOP: 10,
-};

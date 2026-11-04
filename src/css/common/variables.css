@@ -1,0 +1,23 @@
+:root {
+  /* ===== Colors ===== */
+  --color-primary: #040404;
+  --color-secondary: #1b1b1b;
+  --color-accent: #7e847d;
+  --color-bg: #ffffff;
+  --color-muted: rgba(27, 27, 27, 0.5);
+  --color-border: rgba(27, 27, 27, 0.1);
+  --color-error: #d80027;
+  --color-success: #3cbc81;
+
+  /* ===== Typography ===== */
+  --font-primary: 'DM Sans', sans-serif;
+
+  /* ===== Layout ===== */
+  --container-max: 1240px;
+  --container-padding: 20px;
+
+  /* Breakpoints (px) are also the values to use in @media:
+     mobile 320, tablet 768, desktop 1440.
+     CSS custom properties can't be used inside @media conditions,
+     so write the numbers directly, e.g. @media (min-width: 768px). */
+}
