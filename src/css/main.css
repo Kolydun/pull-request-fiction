@@ -1,0 +1,5 @@
+/* modern-normalize is imported from the JS entry points (main.js / favorites.js)
+   so it loads before any project styles. */
+@import './common/variables.css';
+@import './common/base.css';
+@import './common/loader.css';

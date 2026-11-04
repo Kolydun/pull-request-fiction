@@ -1,5 +1,3 @@
-@use 'variables' as *;
-
 *,
 *::before,
 *::after {
@@ -7,15 +5,15 @@
 }
 
 html {
-  font-size: $font-size-base;
+  font-size: 16px;
 }
 
 body {
   margin: 0;
-  font-family: $font-primary;
-  line-height: $line-height-base;
-  color: $color-primary;
-  background-color: $color-bg;
+  font-family: var(--font-primary);
+  line-height: 1.5;
+  color: var(--color-primary);
+  background-color: var(--color-bg);
 }
 
 h1,
@@ -52,9 +50,13 @@ button {
 
 .container {
   width: 100%;
-  max-width: $container-max;
+  max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 $container-padding;
+  padding: 0 var(--container-padding);
+}
+
+.is-hidden {
+  display: none !important;
 }
 
 .visually-hidden {
