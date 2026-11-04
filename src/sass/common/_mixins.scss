@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use 'variables' as *;
+
+// Mobile-first media query helper.
+// Usage: @include respond-to('tablet') { ... }
+@mixin respond-to($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$breakpoint}`. Available: #{map.keys($breakpoints)}.";
+  }
+}

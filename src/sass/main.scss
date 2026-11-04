@@ -1,0 +1,14 @@
+// ===== Global foundation =====
+// `modern-normalize` is imported from the JS entry points (main.js / favorites.js)
+// so it loads before any project styles.
+
+@use 'common/fonts';
+@use 'common/base';
+
+// ===== Component partials =====
+// Each ticket registers its partial here. Keep alphabetical, one per line.
+// Lead-owned: do not remove other teams' lines.
+//
+// @use '../js/components/header/header';
+// @use '../js/components/footer/footer';
+// ... (added in Task 7)

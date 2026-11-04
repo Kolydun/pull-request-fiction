@@ -1,0 +1,25 @@
+// ===== Colors =====
+$color-primary: #040404;
+$color-secondary: #1b1b1b;
+$color-accent: #7e847d;
+$color-bg: #ffffff;
+$color-muted: rgba(27, 27, 27, 0.5);
+$color-border: rgba(27, 27, 27, 0.1);
+$color-error: #d80027;
+$color-success: #3cbc81;
+
+// ===== Typography =====
+$font-primary: 'DM Sans', sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.5;
+
+// ===== Layout =====
+$container-max: 1240px;
+$container-padding: 20px;
+
+// ===== Breakpoints =====
+$breakpoints: (
+  'mobile': 320px,
+  'tablet': 768px,
+  'desktop': 1440px,
+);
