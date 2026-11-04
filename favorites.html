@@ -3,10 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Your Energy — your favorite exercises in one place." />
     <title>Your Energy — Favorites</title>
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body>
-    <div id="app"></div>
+    <!-- Header -->
+    <header id="header" class="header"></header>
+
+    <main>
+      <!-- Favorites list (rendered from localStorage) -->
+      <section id="favorites" class="favorites container"></section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer"></footer>
+
+    <!-- Global UI -->
+    <div id="loader" class="loader is-hidden"></div>
+    <button id="scroll-up" class="scroll-up is-hidden" type="button" aria-label="Scroll to top"></button>
+
     <script type="module" src="/src/favorites.js"></script>
   </body>
 </html>
