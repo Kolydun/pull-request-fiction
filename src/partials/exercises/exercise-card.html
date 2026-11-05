@@ -1,0 +1,54 @@
+<li class="exercise-card">
+  <div class="exercise-card__top">
+    <div class="exercise-card__tags">
+      <span class="exercise-card__badge">WORKOUT</span>
+      <span class="exercise-card__rating" data-rating>
+        <span data-rating-value></span>
+        <img
+          class="exercise-card__star"
+          data-icon="star"
+          width="16"
+          height="16"
+          alt=""
+        />
+      </span>
+      <button
+        class="exercise-card__remove"
+        type="button"
+        data-exercise-remove
+        aria-label="Remove from favorites"
+      >
+        <img data-icon="trash" width="16" height="16" alt="" />
+      </button>
+    </div>
+    <button class="exercise-card__start" type="button" data-exercise-start>
+      Start
+      <img
+        class="exercise-card__arrow"
+        data-icon="arrow"
+        width="16"
+        height="16"
+        alt=""
+      />
+    </button>
+  </div>
+  <h3 class="exercise-card__name">
+    <img
+      class="exercise-card__glyph"
+      data-icon="run"
+      width="24"
+      height="24"
+      alt=""
+    />
+    <span data-name></span>
+  </h3>
+  <p class="exercise-card__meta">
+    <span
+      >Burned calories: <span class="exercise-card__value" data-calories></span
+    ></span>
+    <span
+      >Body part: <span class="exercise-card__value" data-bodypart></span
+    ></span>
+    <span>Target: <span class="exercise-card__value" data-target></span></span>
+  </p>
+</li>
