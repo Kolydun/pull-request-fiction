@@ -83,9 +83,9 @@ export function initExercises() {
 
   async function loadExercises() {
     const seq = ++requestSeq;
+    // Старі картки лишаються під лоадером до приходу нових,
+    // інакше сторінка складається і інтерфейс стрибає.
     showLoader();
-    list.innerHTML = '';
-    empty.classList.add('is-hidden');
 
     try {
       const data = await getExercises({
@@ -121,6 +121,7 @@ export function initExercises() {
 
   function render(items) {
     if (!items.length) {
+      list.innerHTML = '';
       empty.classList.remove('is-hidden');
       return;
     }
