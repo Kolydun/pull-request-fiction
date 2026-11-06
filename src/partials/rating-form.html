@@ -1,0 +1,54 @@
+<div class="rating-backdrop is-hidden" id="rating-modal">
+  <div class="rating-modal-container">
+    <button type="button" class="rating-close-btn" data-modal-close aria-label="Close modal">
+      <svg class="rating-close-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 1L1 13M1 1L13 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <p class="rating-label">Rating</p>
+
+    <form class="rating-form" id="rating-form">
+      <div class="rating-group">
+        <span class="rating-value" id="rating-value">0.0</span>
+        <div class="rating-stars" role="radiogroup" aria-label="Rating stars">
+          <input type="radio" id="star-5" name="rate" value="5" required />
+          <label for="star-5" title="5 stars"></label>
+
+          <input type="radio" id="star-4" name="rate" value="4" />
+          <label for="star-4" title="4 stars"></label>
+
+          <input type="radio" id="star-3" name="rate" value="3" />
+          <label for="star-3" title="3 stars"></label>
+
+          <input type="radio" id="star-2" name="rate" value="2" />
+          <label for="star-2" title="2 stars"></label>
+
+          <input type="radio" id="star-1" name="rate" value="1" />
+          <label for="star-1" title="1 star"></label>
+        </div>
+      </div>
+
+      <div class="rating-fields">
+        <input
+          type="email"
+          name="email"
+          class="rating-input"
+          placeholder="Email"
+          required
+          pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+        />
+
+        <textarea
+          name="review"
+          class="rating-textarea"
+          rows="3"
+          placeholder="Your comment"
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" class="rating-submit-btn">Send</button>
+    </form>
+  </div>
+</div>
