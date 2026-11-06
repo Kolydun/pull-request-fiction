@@ -1,11 +1,10 @@
 import { getFilters } from './api/energyApi.js';
 import { FILTER_TYPES } from './constants/index.js';
 import { showLoader, hideLoader } from './helpers/loader.js';
+// TODO(задача 7): розкоментувати цей імпорт і 3 місця нижче після мержа пагінації.
+// import { createPagination } from './pagination.js';
 
 const TABLET = '(min-width: 768px)';
-
-// TODO: поставити true після підключення задачі 6 і видалити заглушку.
-const EXERCISES_CONNECTED = false;
 
 const state = {
   filter: FILTER_TYPES.MUSCLES,
@@ -71,31 +70,9 @@ export function initCategories() {
     if (!card) return;
 
     const { filter, name } = card.dataset;
+    hideCategories(name);
     emit('category:selected', { filter, name });
-
-    if (EXERCISES_CONNECTED) {
-      hideCategories(name);
-    } else {
-      openStub(filter, name);
-    }
   });
-
-  // TODO: тимчасова заглушка, видалити після підключення задачі 6.
-  const stub = section.querySelector('.categories__stub');
-
-  stub.addEventListener('click', (event) => {
-    const isBackdrop = event.target === stub;
-    if (isBackdrop || event.target.closest('.categories__stub-close')) {
-      stub.close();
-    }
-  });
-
-  function openStub(filter, name) {
-    stub.querySelector('.categories__stub-title').textContent = name;
-    stub.querySelector('.categories__stub-text').textContent =
-      `${filter}: exercises for this category are coming soon.`;
-    stub.showModal();
-  }
 
   window.matchMedia(TABLET).addEventListener('change', () => {
     if (state.isCategorySelected) return;
@@ -143,9 +120,11 @@ export function initCategories() {
       if (seq !== requestSeq) return;
 
       render(data.results ?? []);
+      // updatePagination(data.totalPages);
     } catch {
       if (seq !== requestSeq) return;
       render([]);
+      // updatePagination(0);
     } finally {
       if (seq === requestSeq) hideLoader();
     }
@@ -159,6 +138,19 @@ export function initCategories() {
 
     const markup = items.map(createCategoryMarkup).join('');
     list.insertAdjacentHTML('beforeend', markup);
-    // TODO: підключити createPagination (задача 7) до .categories__pagination.
   }
+
+  /* TODO(задача 7): розкоментувати разом з імпортом угорі.
+  function updatePagination(totalPages) {
+    createPagination({
+      container: pagination,
+      totalPages,
+      currentPage: state.page,
+      onChange: (page) => {
+        state.page = page;
+        loadCategories();
+      },
+    });
+  }
+  */
 }

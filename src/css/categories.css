@@ -121,42 +121,6 @@
   display: none;
 }
 
-/* TODO: тимчасова заглушка, видалити після підключення задачі 6. */
-.categories__stub {
-  width: min(335px, calc(100% - 40px));
-  padding: 0;
-  border: none;
-  border-radius: 20px;
-  color: var(--color-bg);
-  background-color: var(--color-secondary);
-}
-
-.categories__stub::backdrop {
-  background-color: rgba(4, 4, 4, 0.4);
-}
-
-.categories__stub-body {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 32px 24px;
-}
-
-.categories__stub-title {
-  font-size: 24px;
-  font-weight: 400;
-  text-transform: capitalize;
-}
-
-.categories__stub-close {
-  align-self: flex-start;
-  padding: 10px 24px;
-  border: none;
-  border-radius: 30px;
-  color: var(--color-primary);
-  background-color: var(--color-bg);
-}
-
 @media (min-width: 768px) {
   .categories__title {
     font-size: 44px;
