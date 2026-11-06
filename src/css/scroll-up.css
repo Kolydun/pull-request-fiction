@@ -1,0 +1,65 @@
+/* ===== Scroll up button ===== */
+.scroll-up {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: #f4f4f4;
+  background-color: #242424;
+  border: 1px solid #f4f4f4;
+  border-radius: 50%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition:
+    opacity 250ms ease,
+    visibility 250ms ease,
+    transform 250ms ease,
+    color 250ms ease,
+    background-color 250ms ease,
+    border-color 250ms ease;
+}
+
+.scroll-up.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-up:hover,
+.scroll-up:focus-visible {
+  color: #242424;
+  background-color: #f4f4f4;
+  border-color: #242424;
+}
+
+.scroll-up:focus-visible {
+  outline: 2px solid #242424;
+  outline-offset: 2px;
+}
+
+.scroll-up__icon {
+  display: block;
+}
+
+/* ===== Tablet ===== */
+@media (min-width: 768px) {
+  .scroll-up {
+    right: 32px;
+    bottom: 32px;
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-up {
+    transition: none;
+  }
+}

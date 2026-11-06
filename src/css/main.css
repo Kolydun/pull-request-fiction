@@ -3,3 +3,5 @@
 @import './common/variables.css';
 @import './common/base.css';
 @import './common/loader.css';
+@import './hero.css';
+@import './scroll-up.css';
