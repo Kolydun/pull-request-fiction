@@ -1,5 +1,6 @@
 import { getExercises } from '../api/energyApi.js';
 import { showLoader, hideLoader } from '../helpers/loader.js';
+import { createPagination } from '../pagination.js';
 import {
   createExerciseCardMarkup,
   openExerciseModal,
@@ -30,6 +31,7 @@ export function initExercises() {
   const clear = section.querySelector('.exercises__clear');
   const list = section.querySelector('.exercises__list');
   const empty = section.querySelector('.exercises__empty');
+  const pagination = section.querySelector('.pagination');
   if (!crumb || !form || !input || !clear || !list || !empty) return;
 
   const tablet = window.matchMedia(TABLET);
@@ -95,12 +97,26 @@ export function initExercises() {
       if (seq !== requestSeq) return;
 
       render(data.results ?? []);
+      updatePagination(data.totalPages);
     } catch {
       if (seq !== requestSeq) return;
       render([]);
+      updatePagination(0);
     } finally {
       if (seq === requestSeq) hideLoader();
     }
+  }
+
+  function updatePagination(totalPages) {
+    createPagination({
+      container: pagination,
+      totalPages,
+      currentPage: state.page,
+      onChange: (page) => {
+        state.page = page;
+        loadExercises();
+      },
+    });
   }
 
   function render(items) {
