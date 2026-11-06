@@ -1,0 +1,197 @@
+.categories {
+  padding: 40px 0;
+}
+
+.categories__head {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.categories__title {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.categories__crumb {
+  font-size: 16px;
+  color: var(--color-muted);
+  text-transform: capitalize;
+}
+
+.categories__crumb:not(:empty)::before {
+  content: '/';
+  margin-right: 8px;
+  font-size: 28px;
+  color: var(--color-primary);
+}
+
+.categories__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.categories__filter {
+  padding: 4px 0 8px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: 14px;
+  color: var(--color-muted);
+  background: none;
+  transition:
+    color 250ms ease,
+    border-color 250ms ease;
+}
+
+.categories__filter:hover,
+.categories__filter:focus-visible {
+  color: var(--color-primary);
+}
+
+.categories__filter.is-active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.categories__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.categories__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  height: 225px;
+  padding: 16px;
+  overflow: hidden;
+  border: none;
+  border-radius: 12px;
+  color: var(--color-bg);
+  background-color: var(--color-secondary);
+}
+
+.categories__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  transition: transform 250ms ease;
+}
+
+.categories__card:hover .categories__img,
+.categories__card:focus-visible .categories__img {
+  transform: scale(1.05);
+}
+
+.categories__name,
+.categories__type {
+  position: relative;
+  text-align: center;
+}
+
+.categories__name {
+  font-size: 24px;
+  line-height: 1.2;
+  text-transform: capitalize;
+}
+
+.categories__type {
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+.categories__empty {
+  padding: 40px 0;
+  text-align: center;
+  color: var(--color-muted);
+}
+
+.categories__pagination:empty {
+  display: none;
+}
+
+/* TODO: тимчасова заглушка, видалити після підключення задачі 6. */
+.categories__stub {
+  width: min(335px, calc(100% - 40px));
+  padding: 0;
+  border: none;
+  border-radius: 20px;
+  color: var(--color-bg);
+  background-color: var(--color-secondary);
+}
+
+.categories__stub::backdrop {
+  background-color: rgba(4, 4, 4, 0.4);
+}
+
+.categories__stub-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 32px 24px;
+}
+
+.categories__stub-title {
+  font-size: 24px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.categories__stub-close {
+  align-self: flex-start;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 30px;
+  color: var(--color-primary);
+  background-color: var(--color-bg);
+}
+
+@media (min-width: 768px) {
+  .categories__title {
+    font-size: 44px;
+  }
+
+  .categories__crumb {
+    font-size: 24px;
+  }
+
+  .categories__crumb:not(:empty)::before {
+    font-size: 44px;
+  }
+
+  .categories__filters {
+    gap: 20px;
+  }
+
+  .categories__filter {
+    font-size: 16px;
+  }
+
+  .categories__list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 16px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .categories__head {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .categories__card {
+    height: 242px;
+  }
+}
