@@ -5,6 +5,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 40px;
+  margin-bottom: 80px;
 }
 
 .exercises-layout > .exercises-layout__content {
@@ -15,6 +16,7 @@
 .exercises-layout > .quote {
   min-width: 0;
   order: 2;
+  padding-inline: 20px;
 }
 
 .quote {
@@ -25,18 +27,25 @@
 }
 
 .quote__card {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  column-gap: 16px;
+  align-items: center;
   min-width: 0;
-  min-height: 206px;
+  min-height: 209px;
   padding: 20px;
   border-radius: 20px;
-  background: var(--color-secondary);
+  background: #242424;
   color: #f4f4f4;
 }
 
 .quote__top {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  display: contents;
+}
+
+.quote__icon {
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .quote__icon,
@@ -52,50 +61,70 @@
 }
 
 .quote__heading {
-  flex: 1;
+  grid-column: 2;
+  grid-row: 1;
   font-size: 20px;
   font-weight: 500;
-  line-height: 1.2;
+  line-height: 20px;
 }
 
 .quote__quotation-mark {
-  align-self: flex-start;
-  flex: 0 0 auto;
+  grid-column: 3;
+  grid-row: 1;
+  display: block;
+  width: 20px;
+  height: 20px;
 }
 
 .quote__body {
-  margin: 8px 0 0 40px;
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  margin: 8px 0 0;
 }
 
 .quote__text {
   font-size: 14px;
-  line-height: 1.3;
+  line-height: 18px;
+  color: rgba(244, 244, 244, 0.6);
 }
 
 .quote__author {
-  margin-top: 14px;
+  margin-top: 16px;
   font-size: 14px;
-  line-height: 1.3;
+  line-height: 18px;
+  color: #f4f4f4;
 }
 
 .quote__error {
-  margin: 12px 0 0 40px;
+  grid-column: 2;
+  grid-row: 3;
+  margin: 12px 0 0;
   font-size: 12px;
   color: #ffcdcd;
 }
 
 .quote__image {
+  display: block;
   width: 100%;
   aspect-ratio: 335 / 242;
-  object-fit: cover;
+  overflow: hidden;
   border-radius: 20px;
 }
+
+.quote__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.quote__image--favorites { display: none; }
 
 .quote__minutes {
   min-width: 0;
   padding: 20px;
   border-radius: 20px;
-  background: #f4f4f4;
+  background: #ffffff;
 }
 
 .quote__minutes-title-row {
@@ -117,43 +146,60 @@
 .quote__minutes-heading {
   font-size: 20px;
   font-weight: 500;
-  line-height: 1.2;
+  line-height: 20px;
 }
 
 .quote__minutes-subtitle {
-  font-size: 12px;
-  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(36, 36, 36, 0.6);
 }
 
 .quote__minutes-description {
   margin: 16px 0 0 48px;
   font-size: 14px;
-  line-height: 1.3;
+  line-height: 18px;
+  color: #242424;
 }
 
 /* Tablet: quote card and photo side by side, 110 min beneath them. */
 @media (min-width: 768px) {
-  .exercises-layout { gap: 64px; }
+  .exercises-layout { gap: 64px; margin-bottom: 100px; }
 
   .quote {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 400fr) minmax(0, 288fr);
     column-gap: 16px;
     row-gap: 16px;
     align-items: stretch;
   }
 
-  .quote__card { min-height: 249px; padding: 24px; }
-  .quote__body { margin-left: 40px; }
+  .quote__card { min-height: 249px; padding: 40px; }
+  .quote__heading,
+  .quote__minutes-heading {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .quote__author {
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .quote__quotation-mark { width: 24px; height: 24px; }
   .quote__image { height: 249px; aspect-ratio: auto; }
-  .quote__minutes { grid-column: 1; padding: 24px; }
+  .quote__minutes { grid-column: 1; padding: 40px; }
+  .quote__minutes-description { margin-top: 20px; }
 }
 
 /* Desktop: sidebar with quote, photo, and 110 min stacked vertically. */
 @media (min-width: 1440px) {
   .exercises-layout {
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: 32px;
     grid-template-columns: minmax(0, 444px) minmax(0, 1fr);
     gap: 32px;
     align-items: start;
+    margin-bottom: 132px;
   }
 
   .exercises-layout > .quote {
@@ -169,8 +215,72 @@
   }
 
   .quote { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .quote__card { min-height: 242px; padding: 40px; }
-  .quote__body, .quote__error { margin-left: 48px; }
+  .quote__card { min-height: 242px; }
   .quote__image { height: 242px; }
-  .quote__minutes { grid-column: 1; min-height: 242px; padding: 40px; }
+  .quote__minutes { grid-column: 1; padding: 40px; }
+
+  .exercises-layout:has(.categories) {
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: 32px;
+    grid-template-rows: auto auto;
+  }
+
+  .exercises-layout:has(.categories) > .exercises-layout__content {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-row: 1 / span 2;
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+  }
+
+  .exercises-layout:has(.categories) .categories {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-row: 1 / span 2;
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+    padding: 0;
+  }
+
+  .exercises-layout:has(.categories) .categories > .container {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-row: 1 / span 2;
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .exercises-layout:has(.categories) .categories__head {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 0;
+  }
+
+  .exercises-layout:has(.categories) .categories__body,
+  .exercises-layout:has(.categories) .exercises {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    min-width: 0;
+  }
+
+  .exercises-layout:has(.categories) .exercises > .container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories:has(.categories__list.is-hidden) .categories__body {
+    display: none;
+  }
+
+  .exercises-layout > .quote { padding-inline: 0; }
+
+  .exercises-layout:has(.categories) > .quote {
+    grid-row: 2;
+  }
 }

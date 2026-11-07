@@ -1,8 +1,8 @@
 import cardTemplate from '../../partials/exercises/exercise-card.html?raw';
-import iconStar from '../../images/icon-star.svg';
-import iconRun from '../../images/icon-run.svg';
-import iconArrow from '../../images/icon-arrow.svg';
-import iconTrash from '../../images/icon-trash.svg';
+import iconStar from '../../images/icons/icon-star.svg';
+import iconRun from '../../images/icons/icon-run.svg';
+import iconArrow from '../../images/icons/icon-arrow.svg';
+import iconTrash from '../../images/icons/icon-trash.svg';
 
 const ICONS = {
   star: iconStar,

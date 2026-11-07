@@ -1,5 +1,5 @@
-import iconAngle from '../images/icon-angle-left.svg';
-import iconAngles from '../images/icon-angles-left.svg';
+import iconAngle from '../images/icons/icon-angle-left.svg';
+import iconAngles from '../images/icons/icon-angles-left.svg';
 
 // How many page numbers are visible at once, e.g. "... 4 5 6 ...".
 const VISIBLE_PAGES = 3;
@@ -89,7 +89,7 @@ export function createPagination({
 
   container.classList.add('pagination');
   container.classList.remove('is-hidden');
-  container.setAttribute('role', 'navigation');
+  if (container.tagName !== 'NAV') container.setAttribute('role', 'navigation');
   if (!container.hasAttribute('aria-label')) {
     container.setAttribute('aria-label', 'Pagination');
   }
