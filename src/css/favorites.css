@@ -1,0 +1,74 @@
+/* Favorites page: title, list layout, empty state.
+   Card styles live in exercises.css (#6), pagination in pagination.css (#7). */
+
+.favorites {
+  padding: 40px 0;
+}
+
+.favorites__title {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.12;
+}
+
+.favorites__content {
+  margin-top: 20px;
+}
+
+.favorites__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.favorites__empty {
+  max-width: 440px;
+  margin: 32px auto 0;
+  text-align: center;
+  color: var(--color-muted);
+}
+
+@media (min-width: 768px) {
+  .favorites {
+    padding: 64px 0;
+  }
+
+  .favorites__title {
+    font-size: 44px;
+  }
+
+  .favorites__content {
+    margin-top: 32px;
+  }
+
+  .favorites__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .favorites {
+    padding: 80px 0;
+  }
+
+  .favorites__title {
+    font-size: 48px;
+  }
+
+  /* No pagination on desktop: the whole list scrolls inside a fixed-height box. */
+  .favorites__list {
+    max-height: 480px;
+    padding-right: 16px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-secondary) var(--color-border);
+  }
+
+  .favorites__empty {
+    display: flex;
+    align-items: center;
+    min-height: 480px;
+    margin-top: 0;
+  }
+}
