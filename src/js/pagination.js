@@ -171,7 +171,7 @@ function createPageMarkup(number, isActive) {
   const activeClass = isActive ? ' is-active' : '';
   // --length lets CSS shrink the font so a 2+ digit number fits the circle.
   const activeAttrs = isActive
-    ? ` aria-current="page" style="--length: ${String(number).length}"`
+    ? ` aria-current="page" disabled style="--length: ${String(number).length}"`
     : '';
   return `
     <li>

@@ -1,4 +1,5 @@
 import { getExercises } from '../api/energyApi.js';
+import { FILTER_TYPES } from '../constants/index.js';
 import { showLoader, hideLoader } from '../helpers/loader.js';
 import { createPagination } from '../pagination.js';
 import {
@@ -6,6 +7,13 @@ import {
   openExerciseModal,
 } from './exercise-card.js';
 
+const EXERCISE_PARAMS = {
+  [FILTER_TYPES.MUSCLES]: 'muscles',
+  [FILTER_TYPES.BODY_PARTS]: 'bodypart',
+  [FILTER_TYPES.EQUIPMENT]: 'equipment',
+};
+
+const DIRECT_PARAMS = new Set(Object.values(EXERCISE_PARAMS));
 const TABLET = '(min-width: 768px)';
 
 const state = {
@@ -16,6 +24,22 @@ const state = {
 };
 
 let requestSeq = 0;
+const shown = { page: 1, totalPages: 0, keyword: '' };
+
+function exerciseParam(filter) {
+  if (EXERCISE_PARAMS[filter]) return EXERCISE_PARAMS[filter];
+  if (DIRECT_PARAMS.has(filter)) return filter;
+  return '';
+}
+
+function titleCase(value) {
+  return String(value)
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
 
 function getPerPage() {
   return window.matchMedia(TABLET).matches ? 10 : 8;
@@ -69,17 +93,33 @@ export function initExercises() {
   });
 
   tablet.addEventListener('change', () => {
-    if (!state.param) return;
+    if (section.classList.contains('is-hidden') || !state.param) return;
     state.page = 1;
     loadExercises();
   });
 
-  // Мокап: видалити після імплементації фільтрів.
-  state.param = 'bodypart';
-  state.category = 'waist';
-  crumb.textContent = 'Waist';
-  section.classList.remove('is-hidden');
-  loadExercises();
+  document.addEventListener('category:selected', (event) => {
+    const detail = event.detail ?? {};
+    const category = String(detail.name ?? detail.category ?? '')
+      .trim()
+      .toLowerCase();
+    const param = exerciseParam(detail.filter);
+    if (!category || !param) return;
+
+    state.param = param;
+    state.category = category;
+    state.keyword = '';
+    state.page = 1;
+    input.value = '';
+    syncClear();
+    crumb.textContent = titleCase(category);
+    section.classList.remove('is-hidden');
+    loadExercises();
+  });
+
+  document.addEventListener('filter:changed', () => {
+    section.classList.add('is-hidden');
+  });
 
   async function loadExercises() {
     const seq = ++requestSeq;
@@ -98,10 +138,22 @@ export function initExercises() {
 
       render(data.results ?? []);
       updatePagination(data.totalPages);
+      shown.page = state.page;
+      shown.totalPages = Number(data.totalPages) || 0;
+      shown.keyword = state.keyword;
     } catch {
       if (seq !== requestSeq) return;
-      render([]);
-      updatePagination(0);
+      if (!list.children.length) {
+        render([]);
+        updatePagination(0);
+        return;
+      }
+
+      state.page = shown.page;
+      state.keyword = shown.keyword;
+      input.value = shown.keyword;
+      syncClear();
+      updatePagination(shown.totalPages);
     } finally {
       if (seq === requestSeq) hideLoader();
     }

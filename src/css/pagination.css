@@ -98,14 +98,18 @@
   transition: color 250ms ease;
 }
 
-.pagination__page:hover {
-  color: var(--color-secondary);
+.pagination__page:disabled {
+  opacity: 1;
 }
 
 /* Arrow hover follows the design's Socials hover: the outline circle gets
    a dark fill and the icon turns light. Only for real pointers, so the
    state doesn't stick after a tap on touch screens. */
 @media (hover: hover) {
+  .pagination__page:not(:disabled):hover {
+    color: var(--color-secondary);
+  }
+
   .pagination__arrow:not(:disabled):hover {
     background-color: var(--color-secondary);
   }
