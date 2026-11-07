@@ -1,0 +1,163 @@
+.pagination {
+  --pagination-inactive: #d4d4d4;
+  --pagination-circle: 31px;
+  --pagination-gap: 8px;
+  /* Width of one arrow group: "‹" only below 375px, "« ‹" from 375px. */
+  --pagination-arrows: 32px;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px var(--pagination-gap);
+  margin-top: 20px;
+}
+
+.pagination:empty {
+  display: none;
+}
+
+.pagination__arrows {
+  display: flex;
+  gap: 4px;
+}
+
+.pagination__arrow {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--color-secondary);
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 250ms ease;
+}
+
+/* First/last page: no room for them on screens narrower than 375px. */
+.pagination__arrow--edge {
+  display: none;
+}
+
+.pagination__arrow:disabled {
+  border-color: var(--color-border);
+  cursor: default;
+}
+
+.pagination__icon {
+  display: block;
+  pointer-events: none;
+  transition: filter 250ms ease;
+}
+
+.pagination__arrow:disabled .pagination__icon {
+  opacity: 0.5;
+}
+
+.pagination__arrows--next .pagination__icon {
+  transform: scaleX(-1);
+}
+
+.pagination__pages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--pagination-inactive);
+}
+
+/* With arrows the number block keeps one width from page to page, so the
+   arrows don't shift under the cursor. It fits "… N (N) N …", where every N
+   has --digits of the widest digit (1ch = "0" in DM Sans); "…" is 0.71em.
+   On narrow screens it is capped by the space left next to the two arrow
+   groups (--pagination-arrows), so the row doesn't wrap. */
+.pagination__arrows + .pagination__pages {
+  --number: calc(var(--digits, 1) * (1ch + 0.04em));
+
+  min-width: min(
+    calc(2 * 0.71em + 4 * 8px + 2 * var(--number) + var(--pagination-circle)),
+    calc(100% - 2 * var(--pagination-arrows) - 2 * var(--pagination-gap))
+  );
+}
+
+.pagination__page {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--pagination-circle);
+  padding: 0;
+  border: 0;
+  border-radius: 18px;
+  background-color: transparent;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  transition: color 250ms ease;
+}
+
+.pagination__page:hover {
+  color: var(--color-secondary);
+}
+
+/* Arrow hover follows the design's Socials hover: the outline circle gets
+   a dark fill and the icon turns light. Only for real pointers, so the
+   state doesn't stick after a tap on touch screens. */
+@media (hover: hover) {
+  .pagination__arrow:not(:disabled):hover {
+    background-color: var(--color-secondary);
+  }
+
+  /* The icon file is #242424: brightness(0) makes it black, invert(0.957)
+     turns black into #f4f4f4. */
+  .pagination__arrow:not(:disabled):hover .pagination__icon {
+    filter: brightness(0) invert(0.957);
+  }
+}
+
+/* Always the design circle. Single digits keep the regular size; longer
+   numbers get a smaller font so they fit: --length digits of at most 0.71em
+   each, inside the circle minus 2px border and 2px gap on each side. */
+.pagination__page.is-active {
+  width: var(--pagination-circle);
+  padding: 0;
+  font-size: min(
+    1em,
+    (var(--pagination-circle) - 6px) / (var(--length, 1) * 0.71)
+  );
+  border: 1px solid var(--color-secondary);
+  border-radius: 50%;
+  color: var(--color-secondary);
+  cursor: default;
+}
+
+.pagination__arrow:focus-visible,
+.pagination__page:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+@media (min-width: 375px) {
+  .pagination {
+    --pagination-arrows: 68px;
+  }
+
+  .pagination__arrow--edge {
+    display: grid;
+  }
+}
+
+@media (min-width: 768px) {
+  .pagination {
+    --pagination-circle: 32px;
+    --pagination-gap: 20px;
+
+    margin-top: 32px;
+  }
+
+  .pagination__pages {
+    font-size: 24px;
+  }
+}
