@@ -124,14 +124,22 @@
 @media (min-width: 768px) {
   .categories__title {
     font-size: 44px;
+    font-weight: 400;
+    line-height: 48px;
+    letter-spacing: -0.02em;
   }
 
   .categories__crumb {
     font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: -0.02em;
   }
 
   .categories__crumb:not(:empty)::before {
     font-size: 44px;
+    line-height: 48px;
+    letter-spacing: normal;
   }
 
   .categories__filters {
@@ -148,11 +156,23 @@
   }
 }
 
+.categories:has(.categories__list.is-hidden) {
+  padding-bottom: 0;
+}
+
+.categories:has(.categories__list.is-hidden) .categories__head {
+  margin-bottom: 0;
+}
+
 @media (min-width: 1440px) {
   .categories__head {
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .categories__title {
+    margin-right: auto;
   }
 
   .categories__card {

@@ -1,26 +1,5 @@
 .exercises {
-  padding: 40px 0;
-}
-
-.exercises__head {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.exercises__title {
-  font-size: 32px;
-  font-weight: 500;
-  line-height: 1.12;
-}
-
-.exercises__crumb {
-  font-weight: 400;
-  color: var(--color-muted);
-}
-
-.exercises__crumb:not(:empty)::before {
-  content: '/ ';
+  padding: 0 0 40px;
 }
 
 .exercises__form {
@@ -201,18 +180,7 @@
 
 @media (min-width: 768px) {
   .exercises {
-    padding: 64px 0;
-  }
-
-  .exercises__head {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
-  }
-
-  .exercises__title {
-    font-size: 44px;
+    padding: 0 0 64px;
   }
 
   .exercises__form {
@@ -237,11 +205,7 @@
 
 @media (min-width: 1440px) {
   .exercises {
-    padding: 80px 0;
-  }
-
-  .exercises__title {
-    font-size: 48px;
+    padding: 0 0 80px;
   }
 
   .exercises__form {

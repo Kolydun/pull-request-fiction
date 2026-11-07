@@ -1,8 +1,7 @@
 import { getFilters } from './api/energyApi.js';
 import { FILTER_TYPES } from './constants/index.js';
 import { showLoader, hideLoader } from './helpers/loader.js';
-// TODO(задача 7): розкоментувати цей імпорт і 3 місця нижче після мержа пагінації.
-// import { createPagination } from './pagination.js';
+import { createPagination } from './pagination.js';
 
 const TABLET = '(min-width: 768px)';
 
@@ -44,6 +43,7 @@ export function initCategories() {
   if (!section) return;
 
   const crumb = section.querySelector('.categories__crumb');
+  const search = section.querySelector('.exercises__form');
   const filters = section.querySelector('.categories__filters');
   const list = section.querySelector('.categories__list');
   const empty = section.querySelector('.categories__empty');
@@ -93,6 +93,7 @@ export function initCategories() {
   function hideCategories(name) {
     state.isCategorySelected = true;
     crumb.textContent = name;
+    search?.classList.remove('is-hidden');
     list.classList.add('is-hidden');
     empty.classList.add('is-hidden');
     pagination.classList.add('is-hidden');
@@ -101,6 +102,7 @@ export function initCategories() {
   function showCategories() {
     state.isCategorySelected = false;
     crumb.textContent = '';
+    search?.classList.add('is-hidden');
     list.classList.remove('is-hidden');
     pagination.classList.remove('is-hidden');
   }
@@ -120,11 +122,11 @@ export function initCategories() {
       if (seq !== requestSeq) return;
 
       render(data.results ?? []);
-      // updatePagination(data.totalPages);
+      updatePagination(data.totalPages);
     } catch {
       if (seq !== requestSeq) return;
       render([]);
-      // updatePagination(0);
+      updatePagination(0);
     } finally {
       if (seq === requestSeq) hideLoader();
     }
@@ -140,7 +142,6 @@ export function initCategories() {
     list.insertAdjacentHTML('beforeend', markup);
   }
 
-  /* TODO(задача 7): розкоментувати разом з імпортом угорі.
   function updatePagination(totalPages) {
     createPagination({
       container: pagination,
@@ -152,5 +153,4 @@ export function initCategories() {
       },
     });
   }
-  */
 }

@@ -49,14 +49,14 @@ export function initExercises() {
   const section = document.querySelector('.exercises');
   if (!section) return;
 
-  const crumb = section.querySelector('.exercises__crumb');
-  const form = section.querySelector('.exercises__form');
-  const input = section.querySelector('.exercises__input');
-  const clear = section.querySelector('.exercises__clear');
+  const crumb = document.querySelector('.categories__crumb');
+  const form = document.querySelector('.exercises__form');
+  const input = document.querySelector('.exercises__input');
+  const clear = document.querySelector('.exercises__clear');
   const list = section.querySelector('.exercises__list');
   const empty = section.querySelector('.exercises__empty');
   const pagination = section.querySelector('.pagination');
-  if (!crumb || !form || !input || !clear || !list || !empty) return;
+  if (!form || !input || !clear || !list || !empty) return;
 
   const tablet = window.matchMedia(TABLET);
 
@@ -112,7 +112,7 @@ export function initExercises() {
     state.page = 1;
     input.value = '';
     syncClear();
-    crumb.textContent = titleCase(category);
+    if (crumb) crumb.textContent = titleCase(category);
     section.classList.remove('is-hidden');
     loadExercises();
   });
