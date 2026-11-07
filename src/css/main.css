@@ -3,4 +3,13 @@
 @import './common/variables.css';
 @import './common/base.css';
 @import './common/loader.css';
+@import './header.css';
+@import './categories.css';
+@import './exercises.css';
+@import './pagination.css';
+@import './quote.css';
+@import './modal.css';
+@import './favorites.css';
+@import './footer.css';
+@import './toast.css';
 @import './rating.css';
