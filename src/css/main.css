@@ -3,3 +3,6 @@
 @import './common/variables.css';
 @import './common/base.css';
 @import './common/loader.css';
+@import './footer.css';
+@import './toast.css';
+
