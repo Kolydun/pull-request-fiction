@@ -1,0 +1,176 @@
+/* Task 4  quote + 110 min. Mobile-first layout.
+ * Page owners provide .exercises-layout__content beside this partial.
+ */
+.exercises-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px;
+}
+
+.exercises-layout > .exercises-layout__content {
+  min-width: 0;
+  order: 1;
+}
+
+.exercises-layout > .quote {
+  min-width: 0;
+  order: 2;
+}
+
+.quote {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.quote__card {
+  min-width: 0;
+  min-height: 206px;
+  padding: 20px;
+  border-radius: 20px;
+  background: var(--color-secondary);
+  color: #f4f4f4;
+}
+
+.quote__top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quote__icon,
+.quote__minutes-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(244, 244, 244, 0.2);
+}
+
+.quote__heading {
+  flex: 1;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.quote__quotation-mark {
+  align-self: flex-start;
+  flex: 0 0 auto;
+}
+
+.quote__body {
+  margin: 8px 0 0 40px;
+}
+
+.quote__text {
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.quote__author {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.quote__error {
+  margin: 12px 0 0 40px;
+  font-size: 12px;
+  color: #ffcdcd;
+}
+
+.quote__image {
+  width: 100%;
+  aspect-ratio: 335 / 242;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.quote__minutes {
+  min-width: 0;
+  padding: 20px;
+  border-radius: 20px;
+  background: #f4f4f4;
+}
+
+.quote__minutes-title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.quote__minutes-icon {
+  color: #f4f4f4;
+  background: var(--color-secondary);
+}
+
+.quote__minutes-heading-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.quote__minutes-heading {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.quote__minutes-subtitle {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.quote__minutes-description {
+  margin: 16px 0 0 48px;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+/* Tablet: quote card and photo side by side, 110 min beneath them. */
+@media (min-width: 768px) {
+  .exercises-layout { gap: 64px; }
+
+  .quote {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    row-gap: 16px;
+    align-items: stretch;
+  }
+
+  .quote__card { min-height: 249px; padding: 24px; }
+  .quote__body { margin-left: 40px; }
+  .quote__image { height: 249px; aspect-ratio: auto; }
+  .quote__minutes { grid-column: 1; padding: 24px; }
+}
+
+/* Desktop: sidebar with quote, photo, and 110 min stacked vertically. */
+@media (min-width: 1440px) {
+  .exercises-layout {
+    grid-template-columns: minmax(0, 444px) minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+  }
+
+  .exercises-layout > .quote {
+    grid-column: 1;
+    grid-row: 1;
+    order: 0;
+  }
+
+  .exercises-layout > .exercises-layout__content {
+    grid-column: 2;
+    grid-row: 1;
+    order: 0;
+  }
+
+  .quote { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .quote__card { min-height: 242px; padding: 40px; }
+  .quote__body, .quote__error { margin-left: 48px; }
+  .quote__image { height: 242px; }
+  .quote__minutes { grid-column: 1; min-height: 242px; padding: 40px; }
+}
