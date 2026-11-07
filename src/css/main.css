@@ -4,6 +4,7 @@
 @import './common/base.css';
 @import './common/loader.css';
 @import './header.css';
+@import './hero.css';
 @import './categories.css';
 @import './exercises.css';
 @import './pagination.css';
@@ -13,3 +14,4 @@
 @import './footer.css';
 @import './toast.css';
 @import './rating.css';
+@import './scroll-up.css';
