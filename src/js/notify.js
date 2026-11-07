@@ -4,10 +4,10 @@ import { showLoader, hideLoader } from "./helpers/loader.js";
 
 
 const form = document.querySelector(".footer-form");
-const submitButton = form.querySelector('button[type="submit"]');
-const emailInput = form.querySelector('input[name="email"]');
+const submitButton = form?.querySelector('button[type="submit"]');
+const emailInput = form?.querySelector('input[name="email"]');
 
-form.addEventListener("submit", async (event) => {
+if (form && submitButton && emailInput) form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     if (!form.reportValidity()) {

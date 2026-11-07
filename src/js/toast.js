@@ -1,8 +1,8 @@
 const toast = document.querySelector(".toast");
-const toastTitle = toast.querySelector(".toast-title");
-const toastText = toast.querySelector(".toast-text");
-const toastIcon = toast.querySelector(".toast-icon");
-const toastClose = toast.querySelector(".toast-close");
+const toastTitle = toast?.querySelector(".toast-title");
+const toastText = toast?.querySelector(".toast-text");
+const toastIcon = toast?.querySelector(".toast-icon");
+const toastClose = toast?.querySelector(".toast-close");
 
 let toastTimer;
 
@@ -31,6 +31,8 @@ function positionToast(input) {
 }
 
 export function showMessage(text, type, input) {
+  if (!toast || !input) return;
+
   clearTimeout(toastTimer);
 
   toast.classList.remove("success", "error", "active");
@@ -58,8 +60,10 @@ export function showMessage(text, type, input) {
 }
 
 export function closeToast() {
+  if (!toast) return;
+
   clearTimeout(toastTimer);
   toast.classList.remove("active");
 }
 
-toastClose.addEventListener("click", closeToast);
+toastClose?.addEventListener("click", closeToast);

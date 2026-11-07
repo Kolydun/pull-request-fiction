@@ -4,6 +4,7 @@ import { initHeader } from './js/header.js';
 import { initQuote } from './js/quote.js';
 import { initModal } from './js/exercise-modal.js';
 import { initFavoritesList } from './js/favorites-list.js';
+import './js/notify.js';
 
 initHeader();
 initQuote();

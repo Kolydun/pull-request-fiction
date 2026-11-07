@@ -216,7 +216,7 @@ body {
    TABLET
 ======================================== */
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
 
     .footer-container {
         max-width: 768px;
@@ -234,6 +234,11 @@ body {
         gap: 32px;
     }
 
+    .footer-content,
+    .footer-subscribe {
+        min-width: 0;
+    }
+
     .footer-content {
         grid-column: 2;
         grid-row: 1;
@@ -241,7 +246,7 @@ body {
     }
 
     .footer-title {
-        min-width: 434px;
+        max-width: 100%;
         font-size: 56px;
         line-height: 1.07;
     }
@@ -286,7 +291,7 @@ body {
    DESKTOP
 ======================================== */
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1440px) {
 
     .footer-container {
         max-width: 1440px;
@@ -305,8 +310,7 @@ body {
     }
 
     .footer-title {
-        min-width: 595px;
-        margin-right: 115px;
+        max-width: 100%;
     }
 
 
