@@ -1,12 +1,11 @@
 import { createPagination } from './pagination.js';
 import { createExerciseCardMarkup } from './exercises/exercise-card.js';
+import { openExerciseModal } from './exercise-modal.js';
+import { getFavorites, removeFavorite } from './storage.js';
 
 // Брейкпоінти з src/css/common/variables.css.
 const TABLET = '(min-width: 768px)';
 const DESKTOP = '(min-width: 1440px)';
-
-// Ключ localStorage з issue #3 (контракти).
-const STORAGE_KEY = 'yourEnergy.favorites';
 
 export function initFavoritesList() {
   const section = document.querySelector('.favorites');
@@ -88,32 +87,4 @@ export function initFavoritesList() {
   desktop.addEventListener('change', resetPage);
 
   render();
-}
-
-// ---------------------------------------------------------------------------
-// TODO(#8): тимчасові заглушки до мержу задачі 8. Тоді видалити цей блок
-// і замінити на:
-//   import { getFavorites, removeFavorite } from './storage.js';
-//   import { openExerciseModal } from './exercise-modal.js';
-// ---------------------------------------------------------------------------
-
-function getFavorites() {
-  try {
-    const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
-}
-
-function removeFavorite(id) {
-  const next = getFavorites().filter((exercise) => exercise._id !== id);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-  document.dispatchEvent(
-    new CustomEvent('favorites:changed', { detail: { id } })
-  );
-}
-
-function openExerciseModal(_id) {
-  // Заглушка до задачі 8.
 }
