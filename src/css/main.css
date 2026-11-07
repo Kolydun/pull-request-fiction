@@ -3,6 +3,7 @@
 @import './common/variables.css';
 @import './common/base.css';
 @import './common/loader.css';
+@import './header.css';
 @import './categories.css';
 @import './exercises.css';
 @import './pagination.css';
