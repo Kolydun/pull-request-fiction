@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Your Energy — your favorite exercises in one place." />
+    <meta
+      name="description"
+      content="Your Energy — your favorite exercises in one place."
+    />
     <title>Your Energy — Favorites</title>
 
     <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
@@ -15,12 +18,28 @@
     />
   </head>
   <body>
-    <main></main>
+    <load src="./partials/header.html" />
+
+    <main>
+      <div class="exercises-layout">
+        <load src="./partials/quote.html" />
+        <div class="exercises-layout__content">
+          <load src="./partials/favorites-list.html" />
+        </div>
+      </div>
+    </main>
+
+    <load src="./partials/modal.html" />
+
+    <load src="./partials/footer.html" />
+
+    <load src="./partials/scroll-up.html" />
 
     <div id="loader" class="loader is-hidden">
       <div class="loader__spinner"></div>
     </div>
 
     <script type="module" src="./favorites.js"></script>
+    <load src="./partials/rating-form.html" />
   </body>
 </html>
