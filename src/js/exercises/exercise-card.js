@@ -63,7 +63,3 @@ export function createExerciseCardMarkup(exercise = {}, variant = 'home') {
 
   return card.outerHTML;
 }
-
-export function openExerciseModal(_id) {
-  // Заглушка до задачі 8.
-}

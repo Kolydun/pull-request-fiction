@@ -2,10 +2,8 @@ import { getExercises } from '../api/energyApi.js';
 import { FILTER_TYPES } from '../constants/index.js';
 import { showLoader, hideLoader } from '../helpers/loader.js';
 import { createPagination } from '../pagination.js';
-import {
-  createExerciseCardMarkup,
-  openExerciseModal,
-} from './exercise-card.js';
+import { createExerciseCardMarkup } from './exercise-card.js';
+import { openExerciseModal } from '../exercise-modal.js';
 
 const EXERCISE_PARAMS = {
   [FILTER_TYPES.MUSCLES]: 'muscles',
