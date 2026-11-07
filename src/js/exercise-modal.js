@@ -9,6 +9,7 @@ import {
 } from './storage.js';
 
 export const RATING_OPEN_EVENT = 'rating:open';
+const EXERCISE_OPEN_EVENT = 'exercise:open';
 const START_SELECTOR = '[data-action="start"][data-id]';
 const MAX_RATING = 5;
 
@@ -23,6 +24,10 @@ export function initModal() {
   document.addEventListener('click', (event) => {
     const startBtn = event.target.closest(START_SELECTOR);
     if (startBtn) openExerciseModal(startBtn.dataset.id);
+  });
+
+  document.addEventListener(EXERCISE_OPEN_EVENT, (event) => {
+    openExerciseModal(event.detail?.id);
   });
 
   document.addEventListener(FAVORITES_CHANGED_EVENT, () => {

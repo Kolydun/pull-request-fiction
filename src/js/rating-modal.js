@@ -1,5 +1,7 @@
 import { rateExercise } from './api/energyApi.js';
 import { showLoader, hideLoader } from './helpers/loader.js';
+import { closeModal as closeExerciseModal } from './modal.js';
+import { showMessage } from './toast.js';
 
 let activeExerciseId = null;
 
@@ -19,32 +21,52 @@ export function initRating() {
     });
   });
 
-  const closeModal = () => {
+  const emailInput = form.querySelector('input[name="email"]');
+
+  const notifyError = (message) => {
+    showMessage(message, 'error', emailInput);
+  };
+
+  const closeRatingModal = () => {
+    if (modalEl.classList.contains('is-hidden')) return;
+
     modalEl.classList.add('is-hidden');
+    document.body.classList.remove('modal-open');
     document.removeEventListener('keydown', handleEsc);
-    if (activeExerciseId) {
+
+    const exerciseId = activeExerciseId;
+    activeExerciseId = null;
+    if (exerciseId) {
       document.dispatchEvent(
-        new CustomEvent('exercise:open', { detail: { id: activeExerciseId } })
+        new CustomEvent('exercise:open', { detail: { id: exerciseId } })
       );
     }
   };
 
-  const handleEsc = (e) => {
-    if (e.key === 'Escape') closeModal();
+  const handleEsc = (event) => {
+    if (event.key !== 'Escape') return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    closeRatingModal();
   };
 
-  modalEl.addEventListener('click', (e) => {
-    if (e.target === modalEl || e.target.closest('[data-modal-close]')) {
-      closeModal();
+  modalEl.addEventListener('click', (event) => {
+    if (event.target === modalEl || event.target.closest('[data-modal-close]')) {
+      closeRatingModal();
     }
   });
 
   document.addEventListener('rating:open', (event) => {
-    activeExerciseId = event.detail?.id || 'demo-id';
+    const exerciseId = event.detail?.id;
+    if (!exerciseId) return;
+
+    activeExerciseId = exerciseId;
+    closeExerciseModal();
     form.reset();
     if (valueDisplay) valueDisplay.textContent = '0.0';
 
     modalEl.classList.remove('is-hidden');
+    document.body.classList.add('modal-open');
     document.addEventListener('keydown', handleEsc);
   });
 
@@ -57,22 +79,21 @@ export function initRating() {
     const review = formData.get('review')?.toString().trim();
 
     if (!activeExerciseId || !rate || !email || !review) {
-      alert('Please fill in all fields correctly.');
+      notifyError('Please fill in all fields correctly.');
       return;
     }
 
     try {
       showLoader();
       await rateExercise(activeExerciseId, { rate, email, review });
-      alert('Thank you for your rating!');
       form.reset();
-      closeModal();
+      closeRatingModal();
     } catch (error) {
       const message =
         error?.response?.data?.message ||
         error?.message ||
         'Error submitting rating. Please try again.';
-      alert(message);
+      notifyError(message);
     } finally {
       hideLoader();
     }
