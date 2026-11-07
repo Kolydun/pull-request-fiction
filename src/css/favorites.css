@@ -1,14 +1,10 @@
 /* Favorites page: title, list layout, empty state.
    Card styles live in exercises.css (#6), pagination in pagination.css (#7). */
 
-.favorites {
-  padding: 40px 0;
-}
-
 .favorites__title {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 500;
-  line-height: 1.12;
+  line-height: 38px;
 }
 
 .favorites__content {
@@ -28,37 +24,168 @@
   color: var(--color-muted);
 }
 
-@media (min-width: 768px) {
-  .favorites {
-    padding: 64px 0;
-  }
+/* Quote pieces and the list share one grid, so the title can sit above
+   the quote while the cards stay beside it on desktop. */
+.exercises-layout:has(.favorites) {
+  gap: 0;
+  padding-top: 60px;
+  padding-inline: 20px;
+}
 
+.exercises-layout:has(.favorites) > .quote,
+.exercises-layout:has(.favorites) > .exercises-layout__content,
+.exercises-layout:has(.favorites) .favorites,
+.exercises-layout:has(.favorites) .favorites > .container {
+  display: contents;
+}
+
+.exercises-layout:has(.favorites) .favorites__title {
+  grid-row: 1;
+  margin-bottom: 20px;
+}
+
+.exercises-layout:has(.favorites) .quote__card {
+  grid-row: 2;
+  min-height: 206px;
+  margin-bottom: 20px;
+}
+
+.exercises-layout:has(.favorites) .quote__minutes {
+  grid-row: 3;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.exercises-layout:has(.favorites) .quote__image--favorites {
+  display: block;
+  grid-row: 4;
+  height: 119px;
+  aspect-ratio: auto;
+  margin-bottom: 40px;
+}
+
+.exercises-layout:has(.favorites) .favorites__content {
+  grid-row: 5;
+  margin-top: 0;
+}
+
+.exercises-layout:has(.favorites) .quote__image:not(.quote__image--favorites) {
+  display: none;
+}
+
+.exercises-layout:has(.favorites) .quote__minutes-title-row {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.exercises-layout:has(.favorites) .quote__minutes-description { display: none; }
+
+@media (min-width: 768px) {
   .favorites__title {
     font-size: 44px;
-  }
-
-  .favorites__content {
-    margin-top: 32px;
+    line-height: 48px;
   }
 
   .favorites__list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+    gap: 32px 16px;
+  }
+
+  .exercises-layout:has(.favorites) {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+    padding-top: 76px;
+    padding-inline: 32px;
+  }
+
+  .exercises-layout:has(.favorites) .favorites__title,
+  .exercises-layout:has(.favorites) .quote__card,
+  .exercises-layout:has(.favorites) .favorites__content {
+    grid-column: 1 / -1;
+  }
+
+  .exercises-layout:has(.favorites) .favorites__title { margin-bottom: 32px; }
+
+  .exercises-layout:has(.favorites) .quote__card {
+    min-height: 220px;
+    margin-bottom: 16px;
+  }
+
+  .exercises-layout:has(.favorites) .quote__minutes {
+    grid-column: 1;
+    grid-row: 3;
+    padding: 24px;
+    margin-bottom: 64px;
+  }
+
+  .exercises-layout:has(.favorites) .quote__minutes-title-row { gap: 12px; }
+
+  .exercises-layout:has(.favorites) .quote__image--favorites {
+    grid-column: 2;
+    grid-row: 3;
+    height: 141px;
+    margin-bottom: 64px;
   }
 }
 
 @media (min-width: 1440px) {
-  .favorites {
-    padding: 80px 0;
+  .exercises-layout:has(.favorites) {
+    grid-template-columns: 494px minmax(0, 1fr);
+    column-gap: 32px;
+    row-gap: 32px;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-top: 70px;
+    padding-inline: 32px;
   }
 
-  .favorites__title {
-    font-size: 48px;
+  .exercises-layout:has(.favorites) > .quote {
+    display: grid;
+    grid-column: 1;
+    grid-row: 2;
+    grid-template-columns: 239px 239px;
+    gap: 16px;
+    width: 494px;
+    padding-inline: 0;
+  }
+
+  .exercises-layout:has(.favorites) .favorites__title {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 0;
+  }
+
+  .exercises-layout:has(.favorites) .quote__card {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    min-height: 230px;
+    margin-bottom: 0;
+  }
+
+  .exercises-layout:has(.favorites) .quote__minutes {
+    grid-column: 1;
+    grid-row: 2;
+    margin-bottom: 0;
+  }
+
+  .exercises-layout:has(.favorites) .quote__image--favorites {
+    grid-column: 2;
+    grid-row: 2;
+    height: 141px;
+    margin-bottom: 0;
+  }
+
+  .exercises-layout:has(.favorites) .favorites__content {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    margin-left: 0;
   }
 
   /* No pagination on desktop: the whole list scrolls inside a fixed-height box. */
   .favorites__list {
-    max-height: 480px;
+    max-height: 487px;
     padding-right: 16px;
     overflow-y: auto;
     scrollbar-width: thin;
@@ -68,7 +195,7 @@
   .favorites__empty {
     display: flex;
     align-items: center;
-    min-height: 480px;
+    min-height: 487px;
     margin-top: 0;
   }
 }

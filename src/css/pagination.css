@@ -123,14 +123,13 @@
 
 /* Always the design circle. Single digits keep the regular size; longer
    numbers get a smaller font so they fit: --length digits of at most 0.71em
-   each, inside the circle minus 2px border and 2px gap on each side. */
+   each, inside the circle minus 2px border and 2px gap on each side.
+   The product lives in --digit: the validator rejects it inside min(). */
 .pagination__page.is-active {
+  --digit: calc(var(--length, 1) * 0.71);
   width: var(--pagination-circle);
   padding: 0;
-  font-size: min(
-    1em,
-    (var(--pagination-circle) - 6px) / (var(--length, 1) * 0.71)
-  );
+  font-size: min(1em, calc((var(--pagination-circle) - 6px) / var(--digit)));
   border: 1px solid var(--color-secondary);
   border-radius: 50%;
   color: var(--color-secondary);
