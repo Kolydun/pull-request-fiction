@@ -16,6 +16,18 @@
   display: flex;
 }
 
+.header__logo-icon {
+  fill: currentColor;
+}
+
+.header__burger-icon {
+  stroke: currentColor;
+}
+
+.header__close-icon {
+  stroke: #f4f4f4;
+}
+
 .header__burger,
 .header__close {
   display: inline-flex;
@@ -90,8 +102,28 @@
 }
 
 .header__socials-link {
+  position: relative;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   transition: opacity 200ms ease;
+}
+
+/* Рамка кнопки: колір тексту з прозорістю 10%, як у макеті. */
+.header__socials-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid currentColor;
+  border-radius: 10px;
+  opacity: 0.1;
+}
+
+.header__icon {
+  fill: currentColor;
+  opacity: 0.8;
 }
 
 .header__socials-link:hover,
