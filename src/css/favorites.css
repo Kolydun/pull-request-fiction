@@ -18,17 +18,21 @@
 }
 
 .favorites__empty {
-  max-width: 440px;
-  margin: 32px auto 0;
+  max-width: 554px;
+  margin: 20px auto 0;
   text-align: center;
   color: var(--color-muted);
+}
+
+.exercises-layout:has(.favorites__empty:not(.is-hidden)) .quote__image--favorites {
+  margin-bottom: 0;
 }
 
 /* Quote pieces and the list share one grid, so the title can sit above
    the quote while the cards stay beside it on desktop. */
 .exercises-layout:has(.favorites) {
   gap: 0;
-  padding-top: 60px;
+  padding-top: 80px;
   padding-inline: 20px;
 }
 
@@ -95,7 +99,7 @@
   .exercises-layout:has(.favorites) {
     grid-template-columns: 1fr 1fr;
     column-gap: 16px;
-    padding-top: 76px;
+    padding-top: 100px;
     padding-inline: 32px;
   }
 
@@ -103,6 +107,15 @@
   .exercises-layout:has(.favorites) .quote__card,
   .exercises-layout:has(.favorites) .favorites__content {
     grid-column: 1 / -1;
+  }
+
+  .exercises-layout:has(.favorites__empty:not(.is-hidden)) .quote__minutes,
+  .exercises-layout:has(.favorites__empty:not(.is-hidden)) .quote__image--favorites {
+    margin-bottom: 0;
+  }
+
+  .favorites__empty {
+    margin-top: 132px;
   }
 
   .exercises-layout:has(.favorites) .favorites__title { margin-bottom: 32px; }
@@ -136,7 +149,7 @@
     row-gap: 32px;
     max-width: 1440px;
     margin-inline: auto;
-    padding-top: 70px;
+    padding-top: 90px;
     padding-inline: 32px;
   }
 
@@ -194,8 +207,9 @@
 
   .favorites__empty {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     min-height: 487px;
     margin-top: 0;
+    padding-top: 114px;
   }
 }
