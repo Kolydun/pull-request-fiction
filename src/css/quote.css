@@ -118,7 +118,9 @@
   object-fit: cover;
 }
 
-.quote__image--favorites { display: none; }
+.quote__image--favorites {
+  display: none;
+}
 
 .quote__minutes {
   min-width: 0;
@@ -164,7 +166,10 @@
 
 /* Tablet: quote card and photo side by side, 110 min beneath them. */
 @media (min-width: 768px) {
-  .exercises-layout { gap: 64px; margin-bottom: 100px; }
+  .exercises-layout {
+    gap: 64px;
+    margin-bottom: 100px;
+  }
 
   .quote {
     grid-template-columns: minmax(0, 400fr) minmax(0, 288fr);
@@ -173,7 +178,10 @@
     align-items: stretch;
   }
 
-  .quote__card { min-height: 249px; padding: 40px; }
+  .quote__card {
+    min-height: 249px;
+    padding: 40px;
+  }
   .quote__heading,
   .quote__minutes-heading {
     font-size: 24px;
@@ -184,10 +192,21 @@
     font-size: 16px;
     line-height: 24px;
   }
-  .quote__quotation-mark { width: 24px; height: 24px; }
-  .quote__image { height: 249px; aspect-ratio: auto; }
-  .quote__minutes { grid-column: 1; padding: 40px; }
-  .quote__minutes-description { margin-top: 20px; }
+  .quote__quotation-mark {
+    width: 24px;
+    height: 24px;
+  }
+  .quote__image {
+    height: 249px;
+    aspect-ratio: auto;
+  }
+  .quote__minutes {
+    grid-column: 1;
+    padding: 40px;
+  }
+  .quote__minutes-description {
+    margin-top: 20px;
+  }
 }
 
 /* Desktop: sidebar with quote, photo, and 110 min stacked vertically. */
@@ -214,10 +233,20 @@
     order: 0;
   }
 
-  .quote { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .quote__card { min-height: 242px; }
-  .quote__image { height: 242px; }
-  .quote__minutes { grid-column: 1; padding: 40px; }
+  .quote {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+  .quote__card {
+    min-height: 242px;
+  }
+  .quote__image {
+    height: 242px;
+  }
+  .quote__minutes {
+    grid-column: 1;
+    padding: 40px;
+  }
 
   .exercises-layout:has(.categories) {
     max-width: 1440px;
@@ -278,7 +307,9 @@
     display: none;
   }
 
-  .exercises-layout > .quote { padding-inline: 0; }
+  .exercises-layout > .quote {
+    padding-inline: 0;
+  }
 
   .exercises-layout:has(.categories) > .quote {
     grid-row: 2;
