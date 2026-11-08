@@ -12,8 +12,9 @@
   z-index: 1000;
   opacity: 1;
   visibility: visible;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
-              visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .rating-backdrop.is-hidden {
@@ -95,7 +96,7 @@
   gap: 2px;
 }
 
-.rating-stars input[type="radio"] {
+.rating-stars input[type='radio'] {
   position: absolute;
   opacity: 0;
   pointer-events: none;
@@ -112,14 +113,14 @@
 }
 
 .rating-stars label::before {
-  content: "★";
+  content: '★';
   font-size: 16px;
   line-height: 1;
   color: rgba(244, 244, 244, 0.2);
   transition: color 200ms ease;
 }
 
-.rating-stars input[type="radio"]:checked ~ label::before,
+.rating-stars input[type='radio']:checked ~ label::before,
 .rating-stars label:hover ~ label::before,
 .rating-stars label:hover::before {
   color: #eea10c;
@@ -200,9 +201,10 @@
   font-weight: 400;
   letter-spacing: 0;
   cursor: pointer;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-              color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media screen and (min-width: 768px) {

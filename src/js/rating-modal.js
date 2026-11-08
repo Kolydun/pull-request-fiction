@@ -51,7 +51,10 @@ export function initRating() {
   };
 
   modalEl.addEventListener('click', (event) => {
-    if (event.target === modalEl || event.target.closest('[data-modal-close]')) {
+    if (
+      event.target === modalEl ||
+      event.target.closest('[data-modal-close]')
+    ) {
       closeRatingModal();
     }
   });
