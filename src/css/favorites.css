@@ -83,7 +83,9 @@
   gap: 8px;
 }
 
-.exercises-layout:has(.favorites) .quote__minutes-description { display: none; }
+.exercises-layout:has(.favorites) .quote__minutes-description {
+  display: none;
+}
 
 @media (min-width: 768px) {
   .favorites__title {
@@ -118,7 +120,9 @@
     margin-top: 132px;
   }
 
-  .exercises-layout:has(.favorites) .favorites__title { margin-bottom: 32px; }
+  .exercises-layout:has(.favorites) .favorites__title {
+    margin-bottom: 32px;
+  }
 
   .exercises-layout:has(.favorites) .quote__card {
     min-height: 220px;
@@ -132,7 +136,9 @@
     margin-bottom: 64px;
   }
 
-  .exercises-layout:has(.favorites) .quote__minutes-title-row { gap: 12px; }
+  .exercises-layout:has(.favorites) .quote__minutes-title-row {
+    gap: 12px;
+  }
 
   .exercises-layout:has(.favorites) .quote__image--favorites {
     grid-column: 2;

@@ -1,8 +1,8 @@
-const toast = document.querySelector(".toast");
-const toastTitle = toast?.querySelector(".toast-title");
-const toastText = toast?.querySelector(".toast-text");
-const toastIcon = toast?.querySelector(".toast-icon");
-const toastClose = toast?.querySelector(".toast-close");
+const toast = document.querySelector('.toast');
+const toastTitle = toast?.querySelector('.toast-title');
+const toastText = toast?.querySelector('.toast-text');
+const toastIcon = toast?.querySelector('.toast-icon');
+const toastClose = toast?.querySelector('.toast-close');
 
 let toastTimer;
 
@@ -23,7 +23,7 @@ function positionToast(input) {
 
   left = Math.max(
     screenPadding,
-    Math.min(left, window.innerWidth - toastWidth - screenPadding),
+    Math.min(left, window.innerWidth - toastWidth - screenPadding)
   );
 
   toast.style.top = `${top}px`;
@@ -35,25 +35,25 @@ export function showMessage(text, type, input) {
 
   clearTimeout(toastTimer);
 
-  toast.classList.remove("success", "error", "active");
+  toast.classList.remove('success', 'error', 'active');
   toast.classList.add(type);
 
-  if (type === "success") {
-    toastTitle.textContent = "SUCCESS";
-    toastIcon.textContent = "✓";
+  if (type === 'success') {
+    toastTitle.textContent = 'SUCCESS';
+    toastIcon.textContent = '✓';
   } else {
-    toastTitle.textContent = "ERROR";
-    toastIcon.textContent = "!";
+    toastTitle.textContent = 'ERROR';
+    toastIcon.textContent = '!';
   }
 
   toastText.textContent = text;
 
-  toast.style.visibility = "hidden";
+  toast.style.visibility = 'hidden';
   positionToast(input);
-  toast.style.visibility = "";
+  toast.style.visibility = '';
 
   requestAnimationFrame(() => {
-    toast.classList.add("active");
+    toast.classList.add('active');
   });
 
   toastTimer = setTimeout(closeToast, 3000);
@@ -63,7 +63,7 @@ export function closeToast() {
   if (!toast) return;
 
   clearTimeout(toastTimer);
-  toast.classList.remove("active");
+  toast.classList.remove('active');
 }
 
-toastClose?.addEventListener("click", closeToast);
+toastClose?.addEventListener('click', closeToast);
