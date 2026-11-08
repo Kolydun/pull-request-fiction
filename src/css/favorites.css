@@ -24,7 +24,8 @@
   color: var(--color-muted);
 }
 
-.exercises-layout:has(.favorites__empty:not(.is-hidden)) .quote__image--favorites {
+.exercises-layout:has(.favorites__empty:not(.is-hidden))
+  .quote__image--favorites {
   margin-bottom: 0;
 }
 
@@ -112,7 +113,8 @@
   }
 
   .exercises-layout:has(.favorites__empty:not(.is-hidden)) .quote__minutes,
-  .exercises-layout:has(.favorites__empty:not(.is-hidden)) .quote__image--favorites {
+  .exercises-layout:has(.favorites__empty:not(.is-hidden))
+    .quote__image--favorites {
     margin-bottom: 0;
   }
 
