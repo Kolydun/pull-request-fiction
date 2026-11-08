@@ -169,7 +169,7 @@
   .quote {
     grid-template-columns: minmax(0, 400fr) minmax(0, 288fr);
     column-gap: 16px;
-    row-gap: 16px;
+    row-gap: 32px;
     align-items: stretch;
   }
 
