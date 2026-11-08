@@ -55,8 +55,8 @@ body {
 }
 
 .footer-social {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
 
   display: flex;
   justify-content: center;
@@ -102,8 +102,8 @@ body {
 
 .footer-description {
   margin-bottom: 20px;
-  font-size: 18px;
-  line-height: 1.33;
+  font-size: 14px;
+  line-height: 1.29;
 }
 
 .footer-form {
@@ -227,6 +227,16 @@ body {
   .footer-content,
   .footer-subscribe {
     min-width: 0;
+  }
+
+  .footer-social {
+    width: 44px;
+    height: 44px;
+  }
+
+  .footer-description {
+    font-size: 18px;
+    line-height: 1.33;
   }
 
   .footer-content {

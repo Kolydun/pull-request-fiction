@@ -180,7 +180,7 @@
 
 @media (min-width: 768px) {
   .exercises {
-    padding: 0 0 64px;
+    padding: 0;
   }
 
   .exercises__form {
@@ -189,12 +189,18 @@
   }
 
   .exercises__input {
+    height: 48px;
     font-size: 14px;
+  }
+
+  .exercises__clear,
+  .exercises__submit {
+    height: 48px;
   }
 
   .exercises__list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+    gap: 32px 16px;
     margin-top: 32px;
   }
 
@@ -204,11 +210,11 @@
 }
 
 @media (min-width: 1440px) {
-  .exercises {
-    padding: 0 0 80px;
-  }
-
   .exercises__form {
     width: 273px;
+  }
+
+  .exercises__list {
+    margin-top: 0;
   }
 }

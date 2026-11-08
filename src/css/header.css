@@ -1,7 +1,7 @@
 .header {
   background-color: #f4f4f4;
   color: #242424;
-  padding: 20px;
+  padding: 20px 20px 0;
 }
 
 .header__inner {
@@ -152,7 +152,7 @@ body.is-menu-open {
 
 @media (min-width: 768px) {
   .header {
-    padding: 24px 32px;
+    padding: 24px 32px 0;
   }
   .header__inner {
     min-height: 52px;
@@ -193,8 +193,10 @@ body.is-menu-open {
   }
 
   .header__link {
-    padding: 6px 16px;
+    padding: 6px 12px;
     border-radius: 30px;
+    font-size: 16px;
+    line-height: 24px;
     color: #ffffff;
   }
 
@@ -205,5 +207,11 @@ body.is-menu-open {
 
   .header__link:not(.header__link--current):hover {
     color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+@media (min-width: 1440px) {
+  .header {
+    padding-top: 28px;
   }
 }
