@@ -1,4 +1,4 @@
-import{a as e,c as t,d as n,f as r,h as i,i as a,l as o,m as s,n as c,p as l,r as u,t as d,u as f}from"./notify-DQMaD1JP.js";var p=`(min-width: 768px)`,m={filter:s.MUSCLES,page:1,isCategorySelected:!1},h=0;function g(){return window.matchMedia(p).matches?12:9}function _(e,t){document.dispatchEvent(new CustomEvent(e,{detail:t}))}function v({filter:e,name:t,imgURL:n}){return`
+import{a as e,c as t,d as n,f as r,h as i,i as a,l as o,m as s,n as c,p as l,r as u,t as d,u as f}from"./notify-7q7941ZC.js";var p=`(min-width: 768px)`,m={filter:s.MUSCLES,page:1,isCategorySelected:!1},h=0;function g(){return window.matchMedia(p).matches?12:9}function _(e,t){document.dispatchEvent(new CustomEvent(e,{detail:t}))}function v({filter:e,name:t,imgURL:n}){return`
     <li class="categories__item">
       <button
         class="categories__card"
